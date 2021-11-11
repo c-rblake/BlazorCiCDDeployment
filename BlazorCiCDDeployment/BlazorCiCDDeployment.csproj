@@ -10,4 +10,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MachinePark.Shared\MachinePark.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
