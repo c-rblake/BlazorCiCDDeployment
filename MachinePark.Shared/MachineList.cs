@@ -25,6 +25,23 @@ namespace MachineParkAlpha.Shared
                 Name = "Machine 2",
                 Log = new List<string> { "Initalized" },
                 Status = false
+            }); Machines.Add(new Machine
+            {
+                Name = "Machine 3",
+                Log = new List<string> { "Initalized" },
+                Status = false
+            });
+            Machines.Add(new Machine
+            {
+                Name = "Machine 4",
+                Log = new List<string> { "Initalized" },
+                Status = false
+            });
+            Machines.Add(new Machine
+            {
+                Name = "Machine 5",
+                Log = new List<string> { "Initalized" },
+                Status = false
             });
 
             return Machines;
