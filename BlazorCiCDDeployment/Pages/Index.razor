@@ -41,12 +41,16 @@ https://stackoverflow.com/questions/63683648/blazor-css-not-loading
 I switched local back to development which fixed the issue.
 
 @code{
-    public List<Machine> Machines { get; set; }
+    //Null reference issues
+    public MachineList MachineList { get; set; } = new MachineList();
+    public List<Machine> Machines { get; set; } = new List<Machine>();
+    //Cors
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        Machines = machineList.InitalizeMachines();
-        return base.OnInitializedAsync();
+        //Machines = machineList.InitalizeMachines(); 
+        MachineList = await httpClient.GetFromJsonAsync<MachineList>("api/machines");
+        Machines = MachineList.Machines;
     }
     public void ChangeStatus(Machine machine)
     {
@@ -54,5 +58,9 @@ I switched local back to development which fixed the issue.
         machine.Log.Add($"{machine.Status}, {DateTime.Now}");
         StateHasChanged();
     }
+
+
+
+
 }
 

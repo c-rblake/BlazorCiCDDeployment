@@ -1,0 +1,21 @@
+﻿@page "/test"
+
+<h1>maya</h1>
+
+<button class="bnt btn-danger" @onclick="ToggleButton">Danger</button>
+
+@if(Toggle)
+            {
+                <h1>Hi Maya</h1>
+            }
+
+@code{ 
+
+    public bool Toggle { get; set; } = false;
+
+    public void ToggleButton()
+    {
+        Toggle = !Toggle;
+    }
+
+}
