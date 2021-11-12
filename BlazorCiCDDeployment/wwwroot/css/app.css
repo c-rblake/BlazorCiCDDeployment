@@ -64,3 +64,14 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.online {
+    /*text-decoration: line-through;*/
+    background-color: #1bcd40;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

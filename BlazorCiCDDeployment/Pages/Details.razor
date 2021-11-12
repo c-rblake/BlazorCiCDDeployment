@@ -1,0 +1,70 @@
+﻿@page "/details"
+@page "/details/{Name}"
+
+<h1>@Name</h1>
+
+@{ 
+    var leadingFormat = "00000";
+}
+
+<div class="col-12 row">
+    <div class="col-2">
+        <img src="/images/machine.png" class="img-responsive rounded-circle employee-detail-img" />
+    </div>
+    <div class="col-10 row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">ID</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Machine.Id</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Name</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Last name</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Status</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Last Service</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Category</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Last Log</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Log[0]</label>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+            @code{
+                //It is a look up to the API. Details page. So we could Access it Directly as well not just as a Passed Param
+                [Parameter]
+                public string Name { get; set; }
+
+                public Machine Machine { get; set; }
+
+                protected override Task OnInitializedAsync()
+                {
+                    Machine = machineList.InitalizeMachines().FirstOrDefault(m => m.Name == Name);
+                    return base.OnInitializedAsync();
+                }
+
+                
+            }
