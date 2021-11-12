@@ -2,6 +2,13 @@
 
 <h1>Machine Park</h1>
 
+@if (MachineList.Machines == null)
+{
+    <p>hej</p>
+}
+else
+{
+
 
 <table>
     <tr>
@@ -26,19 +33,23 @@
         </tr>
     }
 
-
 </table>
+@foreach (var item in MachineList.Machines)
+{
+    <div>@item</div>
+}
+}
 
-https://stackoverflow.com/questions/63683648/blazor-css-not-loading
- "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
+    @*https://stackoverflow.com/questions/63683648/blazor-css-not-loading
+        "profiles": {
+            "IIS Express": {
+                "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Local"
+                    "ASPNETCORE_ENVIRONMENT": "Local"
       }
-    },
-I switched local back to development which fixed the issue.
+            },
+I switched local back to development which fixed the issue.*@
 
 @code{
     //Null reference issues
@@ -48,7 +59,7 @@ I switched local back to development which fixed the issue.
 
     protected override async Task OnInitializedAsync()
     {
-        //Machines = machineList.InitalizeMachines(); 
+        //Machines = machineList.InitalizeMachines();
         MachineList = await httpClient.GetFromJsonAsync<MachineList>("api/machines?code=vH5volBxoB8OhN3Dx/3FMetNk4xHuaX4MUsiblM2JUsDyJMMD2r7cQ==");
         Machines = MachineList.Machines;
     }
