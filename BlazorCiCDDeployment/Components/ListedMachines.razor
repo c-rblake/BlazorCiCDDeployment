@@ -1,7 +1,41 @@
 ﻿<h1>Hello Listed Machines</h1>
 
+@if (MachineList.Machines is null)
+{
+    <div>Loading...</div>
+
+}
+else
+{
+    @foreach (var item in MachineList.Machines)
+    {
+        <div>@item.Name</div>
+    }
+    <div>One little machine more</div>
+}
+
+<button @onclick="ToggleTheMachines"></button>
+
+@if (ListMachines)
+{
+    @foreach (var item in MachineList.Machines)
+    {
+        <div>@item.Name</div>
+    }
+    <div>One little machine more</div>
+}
+
+
 @code{
-    
+
     [Parameter]
     public MachineList MachineList { get; set; }
+
+    public bool ListMachines { get; set; }
+
+    public async Task ToggleTheMachines()
+    {
+        ListMachines = !ListMachines;
+    }
+
 }
