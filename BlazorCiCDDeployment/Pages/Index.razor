@@ -49,7 +49,7 @@ I switched local back to development which fixed the issue.
     protected override async Task OnInitializedAsync()
     {
         //Machines = machineList.InitalizeMachines(); 
-        MachineList = await httpClient.GetFromJsonAsync<MachineList>("api/machines");
+        MachineList = await httpClient.GetFromJsonAsync<MachineList>("api/machines?code=vH5volBxoB8OhN3Dx/3FMetNk4xHuaX4MUsiblM2JUsDyJMMD2r7cQ==");
         Machines = MachineList.Machines;
     }
     public void ChangeStatus(Machine machine)
