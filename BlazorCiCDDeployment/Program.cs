@@ -20,6 +20,7 @@ namespace BlazorCiCDDeployment
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://machinefuncapi20211107093917.azurewebsites.net")
+            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:7071/")
             });
             builder.Services.AddSingleton<IMachineList, MachineList>();
 

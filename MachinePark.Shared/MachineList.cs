@@ -8,7 +8,7 @@ namespace MachineParkAlpha.Shared
 {
     public class MachineList : IMachineList
     {
-        public List<Machine> Machines = new List<Machine>();
+        public List<Machine> Machines = new List<Machine> { new Machine { Name="Instantiated List"} };
 
         public List<Machine> InitalizeMachines() //add a method to get an interface.
         {

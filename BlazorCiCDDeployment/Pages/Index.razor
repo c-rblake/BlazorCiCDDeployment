@@ -35,7 +35,7 @@ else
 
 </table>
 
-<ListedMachines MachineList="MachineList"></ListedMachines>
+@*<ListedMachines MachineList="MachineList"></ListedMachines>*@
 
 
 }
@@ -51,6 +51,7 @@ else
             },
 I switched local back to development which fixed the issue.*@
 
+
 @code{
     //Null reference issues
     public MachineList MachineList { get; set; } = new MachineList();
@@ -59,9 +60,25 @@ I switched local back to development which fixed the issue.*@
 
     protected override async Task OnInitializedAsync()
     {
-        //Machines = machineList.InitalizeMachines();
-        MachineList = await httpClient.GetFromJsonAsync<MachineList>("api/machines?code=vH5volBxoB8OhN3Dx/3FMetNk4xHuaX4MUsiblM2JUsDyJMMD2r7cQ==");
-        Machines = MachineList.Machines;
+
+        MachineList = await httpClient.GetFromJsonAsync<MachineList>("/api/machines?code=vH5volBxoB8OhN3Dx/3FMetNk4xHuaX4MUsiblM2JUsDyJMMD2r7cQ==");
+        //System.Threading.Thread.Sleep(2000);
+        if (MachineList.Machines.Count > 2)
+        {
+            Machines = MachineList.Machines;
+        }
+        else
+        {
+            Machines = machineList.InitalizeMachines();
+        }
+
+
+        //Machines = await httpClient.GetFromJsonAsync<List<Machine>>("api/machines");
+        //var data = await httpClient.GetFromJsonAsync<JsonElement>("api/machines?code=vH5volBxoB8OhN3Dx/3FMetNk4xHuaX4MUsiblM2JUsDyJMMD2r7cQ=="); //The API dto is different from my model.
+
+        //    dynamic data = JsonConvert.DeserializeObject(requestBody);
+
+        //
     }
     public void ChangeStatus(Machine machine)
     {

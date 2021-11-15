@@ -16,13 +16,11 @@ namespace MachineParkAlpha.Shared
         public bool Status { get; set; }
 
         public DateTime? ServiceDate { get; set; } = new DateTime(1979, 07, 28);
+
+        public Category Category { get; set; }
         public Machine()
         {
             Id = Guid.NewGuid().ToString("n");
         }
-
-        public Category Category { get; set; }
-
-
     }
 }
